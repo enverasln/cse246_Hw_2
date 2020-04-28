@@ -10,11 +10,6 @@ public class Main {
         InsertionSort insertionSort = new InsertionSort();
         MergeSort mergeSort = new MergeSort();
         HeapSort heapSort = new HeapSort();
-        QuickSort quickSort = new QuickSort();
-        QuickSortThreeMediain quickSortThreeMediain = new QuickSortThreeMediain();
-
-
-
 
 
         for (int j = 0; j < 5; j++) {
