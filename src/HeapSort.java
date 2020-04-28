@@ -14,16 +14,11 @@ public class HeapSort extends Sort {
             int temp = input[0];
             input[0] = input[i];
             input[i] = temp;
-
             heapify(input, i, 0);
-            if (i == Math.floor(input.length / 2.0)) {
-                median = input[i];
-                break;
-            }
             i--;
-            increaseCount();
         }
 
+        median = input[input.length/2];
         return median;
     }
 
@@ -44,6 +39,15 @@ public class HeapSort extends Sort {
             input[j] = temp;
             increaseExchange();
             heapify(input, input.length, j);
+            increaseCount();
         }
+
+
+    }
+
+    @Override
+    public void write(String fileName, String str) {
+        this.fileName = "hs" + fileName;
+        super.write(this.fileName, str);
     }
 }

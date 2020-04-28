@@ -30,11 +30,11 @@ public class InputUtility {
 
     public static int[] generatePercentageOrderedInput(int inputSize, int percentage) {
         int[] input = generateOrderedInput(inputSize);
-        int tempSize = inputSize * percentage/100;
+        int tempSize = ((inputSize * percentage)/100);
         Random rnd = new Random();
         int j;
-        for (int i = 0; i < tempSize; i++) {
-            j = tempSize + rnd.nextInt(tempSize);
+        for (int i = 0; i < inputSize - tempSize; i++) {
+            j = tempSize + rnd.nextInt(inputSize - tempSize);
             input[tempSize+i]=input[j];
         }
         return input;

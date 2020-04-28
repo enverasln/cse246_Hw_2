@@ -6,6 +6,7 @@ import java.io.IOException;
 public abstract class Sort {
     private long count;
     private long exchange;
+    protected  String fileName;
 
     public abstract int sort(int[] input);
 
@@ -36,6 +37,11 @@ public abstract class Sort {
         count = count + exchange;
         exchange = 0;
         return count;
+    }
+
+    public void resetCount() {
+        count = 0;
+        exchange = 0;
     }
 
     public void increaseExchange() {
