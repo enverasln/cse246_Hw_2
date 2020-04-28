@@ -6,7 +6,7 @@ public class InputUtility {
         Random rnd = new Random();
         int[] input = new int[inputSize];
         for(int i = 0; i < inputSize; i++) {
-            input[i] = rnd.nextInt(500);
+            input[i] = rnd.nextInt(1000);
         }
         return input;
     }
@@ -39,5 +39,7 @@ public class InputUtility {
         }
         return input;
     }
+
+
 
 }
