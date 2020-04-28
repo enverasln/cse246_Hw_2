@@ -11,6 +11,7 @@ public class InsertionSort extends Sort {
                 input[j+1] = input[j];
                 j--;
             }
+            increaseCount();
             input[j+1] = key;
         }
         int medianPosition = input.length / 2;
@@ -18,4 +19,9 @@ public class InsertionSort extends Sort {
         return input[medianPosition];
     }
 
+    @Override
+    public void write(String fileName, String str) {
+        this.fileName = "is" + fileName;
+        super.write(this.fileName, str);
+    }
 }
