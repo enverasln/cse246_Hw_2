@@ -1,10 +1,13 @@
-public class Sort {
+public class InsertionSort extends Sorting {
 
-    public static int insertion_sort(int[] input) {
+    @Override
+    public int sort(int[] input) {
         for (int i = 1; i < input.length; i++) {
             int key = input[i];
             int j = i - 1;
+
             while (j >= 0 && input[j] > key) {
+                increaseCount();
                 input[j+1] = input[j];
                 j--;
             }
@@ -14,4 +17,5 @@ public class Sort {
 
         return input[medianPosition];
     }
+
 }
