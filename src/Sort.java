@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public abstract class Sorting {
+public abstract class Sort {
     private long count;
     private long exchange;
 

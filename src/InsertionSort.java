@@ -1,4 +1,4 @@
-public class InsertionSort extends Sorting {
+public class InsertionSort extends Sort {
 
     @Override
     public int sort(int[] input) {

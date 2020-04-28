@@ -1,4 +1,4 @@
-public class MergeSort extends Sorting {
+public class MergeSort extends Sort {
 
 
     @Override
@@ -20,7 +20,7 @@ public class MergeSort extends Sorting {
             sort(right);
             merge(left, right, input);
         }
-        return 0;
+        return input[input.length / 2];
     }
 
     private void merge(int[] left, int[] right, int[] arr) {
