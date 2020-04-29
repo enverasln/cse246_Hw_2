@@ -16,11 +16,16 @@ public abstract class Sort {
         count++;
     }
 
+    public void increaseCount(long c) {
+        count = count + c;
+    }
+
     public long getCount() {
         count = count + exchange;
         exchange = 0;
         return count;
     }
+
 
     public void resetCount() {
         count = 0;
