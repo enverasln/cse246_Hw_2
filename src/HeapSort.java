@@ -1,53 +1,54 @@
 public class HeapSort extends Sort {
     @Override
-    public int sort(int[] input) {
-        int median= input[0];
-        int i = input.length / 2 - 1;
+    public int sort(int[] input)
+    {
+        int size = input.length;
+        int median = input[size/2];
 
-        while (i >= 0) {
-            heapify(input, input.length, i);
-            i--;
-        }
+        buildHeap(input);
 
-        i = input.length - 1;
-        while (i > 0) {
-            int temp = input[0];
-            input[0] = input[i];
-            input[i] = temp;
+        for (int i=size-1; i>0; i--)
+        {
+            InputUtility.swap(input, 0, i);
             heapify(input, i, 0);
-            i--;
+            if(i == size/2) median = input[i];
         }
-
-        median = input[input.length/2];
         return median;
     }
 
-    private void heapify(int[] input, int n, int i) {
-        int j = i;
-        int left = 2*i + 1;
-        int right = 2*i + 2;
+    private void buildHeap(int[] input) {
+        int size = input.length;
+        for (int i = input.length / 2 - 1; i >= 0; i--){
+            heapify(input, size, i);
+            increaseCount();
+        }
 
-        if (left < n && input[left] > input[j])
-            j = left;
+    }
 
-        if (right < n && input[right] > input[j])
-            j = right;
 
-        if (j != i ) {
-            int temp = input[i];
-            input[i] = input[j];
-            input[j] = temp;
-            increaseExchange();
-            heapify(input, input.length, j);
+    void heapify(int[] input, int size, int i)
+    {
+        int largest = i;
+        int l = 2*i + 1;
+        int r = 2*i + 2;
+
+        if (l < size && input[l] > input[largest]) {
+            largest = l;
+            increaseCount();
+        }
+
+        if (r < size && input[r] > input[largest]){
+            largest = r;
             increaseCount();
         }
 
 
-    }
+        if (largest != i)
+        {
+            InputUtility.swap(input, i, largest);
 
-    @Override
-    public void write(String fileName, String str) {
-        this.fileName = "hs" + fileName;
-        super.write(this.fileName, str);
+            heapify(input, size, largest);
+            increaseCount();
+        }
     }
 }
