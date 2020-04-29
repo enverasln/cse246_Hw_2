@@ -11,7 +11,10 @@ public class HeapSort extends Sort {
         {
             InputUtility.swap(input, 0, i);
             heapify(input, i, 0);
-            if(i == size/2) median = input[i];
+            if(i == size/2) {
+                median = input[i];
+                return median;
+            }
         }
         return median;
     }
