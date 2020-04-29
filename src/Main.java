@@ -10,18 +10,20 @@ public class Main {
         InsertionSort insertionSort = new InsertionSort();
         MergeSort mergeSort = new MergeSort();
         HeapSort heapSort = new HeapSort();
+        MedianQuickSelectSort medianQuickSelectSort = new MedianQuickSelectSort();
 /*
-        input = InputUtility.generateRandomInput(10);
+        input = InputUtility.generateRandomInput(20);
         tempInput = Arrays.copyOf(input, input.length);
         InputUtility.printInput(tempInput);
-        mergeSort.sort(tempInput);
+        median = medianQuickSelectSort.sort(tempInput);
         InputUtility.printInput(tempInput);
+        System.out.println(median);
 
 */
 
         for (int j = 0; j < 5; j++) {
 
-            size = 1;
+            size = 2;
             if(j == 0) {
                 System.out.println("\nRandom Generated");
                 fileName = "_rnd.txt";
@@ -38,7 +40,7 @@ public class Main {
                 System.out.println("\nAt Least %25 Of Unsorted Of The Ending");
                 fileName = "_usp.txt";
             }
-            for(int i = 0; i<5; i++) {
+            for(int i = 0; i<18; i++) {
                 size = size << 1;
                 if(j == 0) {
                     input = InputUtility.generateRandomInput(size);
@@ -54,7 +56,7 @@ public class Main {
 
                 System.out.println("For " + size + " sizes input:");
 
-                for (int k = 0; k < 3; k ++ ) {
+                for (int k = 0; k < 4; k ++ ) {
                     String prefix;
                     long timeComplexity;
                     tempInput = Arrays.copyOf(input, size);
@@ -78,13 +80,21 @@ public class Main {
                         prefix = "ms";
                     }
                     // Writing Max Heap Sort
-                    else {
+                    else if(k == 2){
                         heapSort.resetCount();
                         System.out.print("Max-Heap Sort:\t\t");
                         median = heapSort.sort(tempInput);
                         timeComplexity = heapSort.getCount();
                         str = String.format("%d\t%d\n",size, timeComplexity);
                         prefix = "hs";
+                    } else {
+                        // Writing Median-of-three Quick Selection Sort
+                        medianQuickSelectSort.resetCount();
+                        System.out.print("Median-of-3 Sort:\t");
+                        median = medianQuickSelectSort.sort(tempInput);
+                        timeComplexity = medianQuickSelectSort.getCount();
+                        str = String.format("%d\t%d\n",size, timeComplexity);
+                        prefix = "m3qs";
                     }
                     System.out.println(String.format("Median: %d\t\tTime Complexity: %d", median, timeComplexity));
                     InputUtility.writeFile(prefix.concat(fileName), str);
