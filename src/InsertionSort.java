@@ -19,9 +19,4 @@ public class InsertionSort extends Sort {
         return input[medianPosition];
     }
 
-    @Override
-    public void write(String fileName, String str) {
-        this.fileName = "is" + fileName;
-        super.write(this.fileName, str);
-    }
 }
