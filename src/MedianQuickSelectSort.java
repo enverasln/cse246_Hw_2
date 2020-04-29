@@ -7,7 +7,7 @@ public class MedianQuickSelectSort extends Sort {
     }
 
     private void quickSelect(int[] input, int left, int right, int k ) {
-        if (left + 10 > right) {
+        if (left + 2 > right) {
             InsertionSort is = new InsertionSort();
             is.sort(input);
             increaseCount(is.getCount());
