@@ -79,7 +79,7 @@ public class Main {
                     }
                     // Writing Max Heap Sort
                     else {
-                        mergeSort.resetCount();
+                        heapSort.resetCount();
                         System.out.print("Max-Heap Sort:\t\t");
                         median = heapSort.sort(tempInput);
                         timeComplexity = heapSort.getCount();
