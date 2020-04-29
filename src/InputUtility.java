@@ -59,7 +59,8 @@ public class InputUtility {
     }
 
     public static void  writeFile(String fileName, String str) {
-        File file = new File(fileName);
+        String fl = "./out/".concat(fileName);
+        File file = new File(fl);
         FileWriter fw;
         BufferedWriter bw;
 
