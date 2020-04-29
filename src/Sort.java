@@ -10,24 +10,7 @@ public abstract class Sort {
 
     public abstract int sort(int[] input);
 
-    public void  write(String fileName, String str) {
-        File file = new File(fileName);
-        FileWriter fw;
-        BufferedWriter bw;
 
-        try {
-            if(!file.exists()) {
-                file.createNewFile();
-            }
-            fw = new FileWriter(file, true);
-            bw = new BufferedWriter(fw);
-            bw.write(str);
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     public void increaseCount() {
         count++;
