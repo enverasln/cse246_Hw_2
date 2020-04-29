@@ -36,7 +36,7 @@ public class MedianQuickSelectSort extends Sort {
         if( input[right] < input[middle])
             InputUtility.swap( input, middle, right );
 
-        // Place pivot at position high - 1
+        // Place pivot at position right - 1
         InputUtility.swap( input, middle, right - 1 );
         return input[right - 1];
     }
