@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class InputUtility {
@@ -40,6 +44,36 @@ public class InputUtility {
         return input;
     }
 
+    public static void swap(int[] input, int index1, int index2) {
+        int temp = input[index1];
+        input[index1] = input[index2];
+        input[index2] = temp;
 
+    }
 
+    public static void printInput(int[] input) {
+        for (int value : input) {
+            System.out.print(value + " ");
+        }
+        System.out.println();
+    }
+
+    public static void  writeFile(String fileName, String str) {
+        File file = new File(fileName);
+        FileWriter fw;
+        BufferedWriter bw;
+
+        try {
+            if(!file.exists()) {
+                file.createNewFile();
+            }
+            fw = new FileWriter(file, true);
+            bw = new BufferedWriter(fw);
+            bw.write(str);
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
