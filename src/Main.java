@@ -1,3 +1,4 @@
+import javax.print.attribute.standard.Media;
 import java.util.Arrays;
 
 public class Main {
@@ -11,18 +12,22 @@ public class Main {
         MergeSort mergeSort = new MergeSort();
         HeapSort heapSort = new HeapSort();
         QuickSelect quickSelect = new QuickSelect();
+        MedianOfMedians medianOfMedians = new MedianOfMedians();
         MedianQuickSelectSort medianQuickSelectSort = new MedianQuickSelectSort();
 
-       /* input = InputUtility.generateRandomInput(20);
+        input = InputUtility.generateRandomInput(21);
         tempInput = Arrays.copyOf(input, input.length);
         InputUtility.printInput(tempInput);
-        median = quickSelect.sort(tempInput);
+        median = medianOfMedians.sort(tempInput);
         InputUtility.printInput(tempInput);
-        System.out.println(median);*/
+        System.out.println(median);
+        tempInput = Arrays.copyOf(input, input.length);
+
+        median = insertionSort.sort(tempInput);
+        InputUtility.printInput(tempInput);
 
 
-
-        for (int j = 0; j < 5; j++) {
+ /*       for (int j = 0; j < 5; j++) {
 
             size = 2;
             if(j == 0) {
@@ -112,6 +117,6 @@ public class Main {
             }
         }
 
-
+*/
     }
 }
