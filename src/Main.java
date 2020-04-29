@@ -4,34 +4,41 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int[] input = new int[1], tempInput;
+        int[] input, tempInput;
         int size, median;
-        String str, fileName = "";
+        String str, fileName;
         InsertionSort insertionSort = new InsertionSort();
         MergeSort mergeSort = new MergeSort();
         HeapSort heapSort = new HeapSort();
+/*
+        input = InputUtility.generateRandomInput(10);
+        tempInput = Arrays.copyOf(input, input.length);
+        InputUtility.printInput(tempInput);
+        mergeSort.sort(tempInput);
+        InputUtility.printInput(tempInput);
 
+*/
 
         for (int j = 0; j < 5; j++) {
 
-            size = 2;
+            size = 1;
             if(j == 0) {
-                System.out.println("Input Random Generated");
+                System.out.println("\nRandom Generated");
                 fileName = "_rnd.txt";
             } else if(j == 1) {
-                System.out.println("Input Reverse Ordered");
+                System.out.println("\nReverse Ordered");
                 fileName = "_ro.txt";
             } else if( j == 2) {
-                System.out.println("Input Ordered");
+                System.out.println("\nInput Ordered");
                 fileName = "_o.txt";
             } else if(j == 3) {
-                System.out.println("Input With At Least %50 Of Sorted Of The Beginning\n");
+                System.out.println("\nAt Least %50 Of Sorted Of The Beginning");
                 fileName = "_sp.txt";
-            } else if(j == 4) {
-                System.out.println("Input With At Least %25 Of Unsorted Of The Ending\n");
+            } else {
+                System.out.println("\nAt Least %25 Of Unsorted Of The Ending");
                 fileName = "_usp.txt";
             }
-            for(int i = 2; i<=18; i++) {
+            for(int i = 0; i<5; i++) {
                 size = size << 1;
                 if(j == 0) {
                     input = InputUtility.generateRandomInput(size);
@@ -41,45 +48,47 @@ public class Main {
                     input = InputUtility.generateOrderedInput(size);
                 } else if(j == 3) {
                     input = InputUtility.generatePercentageOrderedInput(size, 50);
-                } else if(j == 4) {
+                } else {
                     input = InputUtility.generatePercentageOrderedInput(size, 75);
                 }
 
                 System.out.println("For " + size + " sizes input:");
-                // Writing Insertion Sort
-                insertionSort.resetCount();
-                System.out.println("Insertion Sort");
-                tempInput = Arrays.copyOf(input, size);
-                median = insertionSort.sort(tempInput);
-                // write file
-                str = String.format("%d\t%d\n",size, insertionSort.getCount());
-                insertionSort.write(fileName, str);
-                System.out.println(String.format("Median: %d\t\tTime Complexity: %d",
-                        median,insertionSort.getCount()));
 
-                // Writing Merge Sort
-                mergeSort.resetCount();
-                System.out.println("Merge Sort");
-                tempInput = Arrays.copyOf(input, size);
-                median = mergeSort.sort(tempInput);
-                // write file
-                str = String.format("%d\t%d\n",size, mergeSort.getCount());
-                mergeSort.write(fileName, str);
-                System.out.println(String.format("Median: %d\t\tTime Complexity: %d",
-                        median,mergeSort.getCount()));
+                for (int k = 0; k < 3; k ++ ) {
+                    String prefix;
+                    long timeComplexity;
+                    tempInput = Arrays.copyOf(input, size);
+                    // Writing Insertion Sort
+                    if(k == 0) {
+                        insertionSort.resetCount();
+                        System.out.print("Insertion Sort:\t\t");
+                        median = insertionSort.sort(tempInput);
+                        timeComplexity = insertionSort.getCount();
+                        str = String.format("%d\t%d\n",size, timeComplexity);
+                        prefix = "is";
 
-                // Writing Max Heap Sort
-                heapSort.resetCount();
-                System.out.println("Max Heap Sort");
-                tempInput = Arrays.copyOf(input, size);
-                median = heapSort.sort(tempInput);
-                // write file
-                str = String.format("%d\t%d\n",size, heapSort.getCount());
-                heapSort.write(fileName, str);
-                System.out.println(String.format("Median: %d\t\tTime Complexity: %d",
-                        median,heapSort.getCount()));
-
-
+                    }
+                    // Writing Insertion Sort
+                    else if(k == 1) {
+                        mergeSort.resetCount();
+                        System.out.print("Merge Sort:\t\t\t");
+                        median = mergeSort.sort(tempInput);
+                        timeComplexity = mergeSort.getCount();
+                        str = String.format("%d\t%d\n",size, timeComplexity);
+                        prefix = "ms";
+                    }
+                    // Writing Max Heap Sort
+                    else {
+                        mergeSort.resetCount();
+                        System.out.print("Max-Heap Sort:\t\t");
+                        median = heapSort.sort(tempInput);
+                        timeComplexity = heapSort.getCount();
+                        str = String.format("%d\t%d\n",size, timeComplexity);
+                        prefix = "hs";
+                    }
+                    System.out.println(String.format("Median: %d\t\tTime Complexity: %d", median, timeComplexity));
+                    InputUtility.writeFile(prefix.concat(fileName), str);
+                }
             }
         }
 
