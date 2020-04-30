@@ -20,14 +20,14 @@ public class Main {
         System.out.println(median);
         tempInput = Arrays.copyOf(input, input.length);
         InputUtility.printInput(tempInput);
-        median = medianOfThreeSort.sort(tempInput);
+        median = medianOfMedians.sort(tempInput);
         InputUtility.printInput(tempInput);
-        System.out.println(median);
-        tempInput = Arrays.copyOf(input, input.length);*/
+        System.out.println(median);*/
 
 
 
-       for (int j = 0; j < 5; j++) {
+
+      for (int j = 0; j < 5; j++) {
 
             size = 2;
             if(j == 0) {
@@ -46,7 +46,7 @@ public class Main {
                 System.out.println("\nAt Least %25 Of Unsorted Of The Ending");
                 fileName = "_usp.txt";
             }
-            for(int i = 0; i<10; i++) {
+            for(int i = 0; i<14; i++) {
                 size = size << 1;
                 if(j == 0) {
                     input = InputUtility.generateRandomInput(size);
@@ -62,7 +62,7 @@ public class Main {
 
                 System.out.println("For " + size + " sizes input:");
 
-                for (int k = 0; k < 5; k ++ ) {
+                for (int k = 0; k < 6; k ++ ) {
                     String prefix;
                     long timeComplexity;
                     tempInput = Arrays.copyOf(input, size);
@@ -101,12 +101,20 @@ public class Main {
                         timeComplexity = quickSelect.getCount();
                         str = String.format("%d\t%d\n",size, timeComplexity);
                         prefix = "qs";
-                    }else {
-                        // Writing Median-of-three Quick Selection Sort
+                    }
+                    // Writing Median-of-three Quick Selection Sort
+                    else if(k == 4){
                         medianOfThreeSort.resetCount();
                         System.out.print("Median-of-3 Sort:\t");
                         median = medianOfThreeSort.sort(tempInput);
                         timeComplexity = medianOfThreeSort.getCount();
+                        str = String.format("%d\t%d\n",size, timeComplexity);
+                        prefix = "m3qs";
+                    } else {
+                        medianOfMedians.resetCount();
+                        System.out.print("Median-of-Medians:\t");
+                        median = medianOfMedians.sort(tempInput);
+                        timeComplexity = medianOfMedians.getCount();
                         str = String.format("%d\t%d\n",size, timeComplexity);
                         prefix = "m3qs";
                     }
@@ -116,6 +124,5 @@ public class Main {
                 }
             }
         }
-
     }
 }
