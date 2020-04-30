@@ -7,13 +7,13 @@ public class QuickSelect extends Sort {
         return input[input.length/2];
     }
 
-    public int partition(int[] A, int left, int right, int pivotIndex)
+    public int partition(int[] input, int left, int right, int pivotIndex)
     {
 
-        int pivot = A[pivotIndex];
+        int pivot = input[pivotIndex];
 
 
-        InputUtility.swap(A, pivotIndex, right);
+        InputUtility.swap(input, pivotIndex, right);
 
         int pIndex = left;
         int i;
@@ -22,15 +22,15 @@ public class QuickSelect extends Sort {
         for (i = left; i < right; i++)
         {
             increaseCount();
-            if (A[i] <= pivot)
+            if (input[i] <= pivot)
             {
-                InputUtility.swap(A, i, pIndex);
+                InputUtility.swap(input, i, pIndex);
                 pIndex++;
             }
         }
 
 
-        InputUtility.swap(A, pIndex, right);
+        InputUtility.swap(input, pIndex, right);
 
 
         return pIndex;
