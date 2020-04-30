@@ -1,4 +1,3 @@
-import javax.print.attribute.standard.Media;
 import java.util.Arrays;
 
 public class Main {
@@ -13,21 +12,22 @@ public class Main {
         HeapSort heapSort = new HeapSort();
         QuickSelect quickSelect = new QuickSelect();
         MedianOfMedians medianOfMedians = new MedianOfMedians();
-        MedianQuickSelectSort medianQuickSelectSort = new MedianQuickSelectSort();
+        MedianOfThreeSort medianOfThreeSort = new MedianOfThreeSort();
 
-        input = InputUtility.generateRandomInput(21);
+        /*input = InputUtility.generateRandomInput(20);
         tempInput = Arrays.copyOf(input, input.length);
-        InputUtility.printInput(tempInput);
-        median = medianOfMedians.sort(tempInput);
-        InputUtility.printInput(tempInput);
+        median = insertionSort.sort(tempInput);
         System.out.println(median);
         tempInput = Arrays.copyOf(input, input.length);
-
-        median = insertionSort.sort(tempInput);
         InputUtility.printInput(tempInput);
+        median = medianOfThreeSort.sort(tempInput);
+        InputUtility.printInput(tempInput);
+        System.out.println(median);
+        tempInput = Arrays.copyOf(input, input.length);*/
 
 
- /*       for (int j = 0; j < 5; j++) {
+
+       for (int j = 0; j < 5; j++) {
 
             size = 2;
             if(j == 0) {
@@ -96,17 +96,17 @@ public class Main {
                     }
                     else if(k == 3){
                         quickSelect.resetCount();
-                        System.out.print("Quick Select Algorithm:\t\t");
+                        System.out.print("Quick Select :\t\t");
                         median = quickSelect.sort(tempInput);
                         timeComplexity = quickSelect.getCount();
                         str = String.format("%d\t%d\n",size, timeComplexity);
                         prefix = "qs";
                     }else {
                         // Writing Median-of-three Quick Selection Sort
-                        medianQuickSelectSort.resetCount();
+                        medianOfThreeSort.resetCount();
                         System.out.print("Median-of-3 Sort:\t");
-                        median = medianQuickSelectSort.sort(tempInput);
-                        timeComplexity = medianQuickSelectSort.getCount();
+                        median = medianOfThreeSort.sort(tempInput);
+                        timeComplexity = medianOfThreeSort.getCount();
                         str = String.format("%d\t%d\n",size, timeComplexity);
                         prefix = "m3qs";
                     }
@@ -117,6 +117,5 @@ public class Main {
             }
         }
 
-*/
     }
 }
